@@ -10,7 +10,10 @@ dependencies:
     sdk: flutter
   cupertino_icons: ^1.0.2
   flutter_native_splash: ^2.1.2+1
-  
+  get: ^4.6.1
+  flutter_svg: ^1.0.3
+  eva_icons_flutter: ^3.1.0
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
@@ -19,12 +22,46 @@ dev_dependencies:
 flutter:
   uses-material-design: true
   assets:
-    - assets/fonts/
     - assets/images/logos/
-  # fonts:
-  #   - family: Schyler
-  #     fonts:
-  #       - asset: fonts/Schyler-Regular.ttf
-  #       - asset: fonts/Schyler-Italic.ttf
-  #         style: italic
-  #         weight: 700
+    - assets/images/exercises/
+    - assets/images/programs/
+
+  fonts:
+    - family: JetBrainsMono
+      fonts:
+        - asset: assets/fonts/JetBrainsMono/JetBrainsMono-ExtraBoldItalic.ttf
+        - asset: assets/fonts/JetBrainsMono/JetBrainsMono-ExtraBold.ttf
+        - asset: assets/fonts/JetBrainsMono/JetBrainsMono-BoldItalic.ttf
+        - asset: assets/fonts/JetBrainsMono/JetBrainsMono-Bold.ttf
+        - asset: assets/fonts/JetBrainsMono/JetBrainsMono-SemiBoldItalic.ttf
+        - asset: assets/fonts/JetBrainsMono/JetBrainsMono-SemiBold.ttf
+        - asset: assets/fonts/JetBrainsMono/JetBrainsMono-MediumItalic.ttf
+        - asset: assets/fonts/JetBrainsMono/JetBrainsMono-Medium.ttf
+        - asset: assets/fonts/JetBrainsMono/JetBrainsMono-Italic.ttf
+        - asset: assets/fonts/JetBrainsMono/JetBrainsMono-Regular.ttf
+        - asset: assets/fonts/JetBrainsMono/JetBrainsMono-ThinItalic.ttf
+        - asset: assets/fonts/JetBrainsMono/JetBrainsMono-Thin.ttf
+        - asset: assets/fonts/JetBrainsMono/JetBrainsMono-LightItalic.ttf
+        - asset: assets/fonts/JetBrainsMono/JetBrainsMono-Light.ttf
+        - asset: assets/fonts/JetBrainsMono/JetBrainsMono-ExtraLightItalic.ttf
+        - asset: assets/fonts/JetBrainsMono/JetBrainsMono-ExtraLight.ttf
+    - family: Montserrat
+      fonts:
+        - asset: assets/fonts/Montserrat/Montserrat-BlackItalic.ttf
+        - asset: assets/fonts/Montserrat/Montserrat-Black.ttf
+        - asset: assets/fonts/Montserrat/Montserrat-ExtraBoldItalic.ttf
+        - asset: assets/fonts/Montserrat/Montserrat-ExtraBold.ttf
+        - asset: assets/fonts/Montserrat/Montserrat-BoldItalic.ttf
+        - asset: assets/fonts/Montserrat/Montserrat-Bold.ttf
+        - asset: assets/fonts/Montserrat/Montserrat-SemiBoldItalic.ttf
+        - asset: assets/fonts/Montserrat/Montserrat-SemiBold.ttf
+        - asset: assets/fonts/Montserrat/Montserrat-MediumItalic.ttf
+        - asset: assets/fonts/Montserrat/Montserrat-Medium.ttf
+        - asset: assets/fonts/Montserrat/Montserrat-Italic.ttf
+        - asset: assets/fonts/Montserrat/Montserrat-Regular.ttf
+        - asset: assets/fonts/Montserrat/Montserrat-LightItalic.ttf
+        - asset: assets/fonts/Montserrat/Montserrat-Light.ttf
+        - asset: assets/fonts/Montserrat/Montserrat-ExtraLightItalic.ttf
+        - asset: assets/fonts/Montserrat/Montserrat-ExtraLight.ttf
+        - asset: assets/fonts/Montserrat/Montserrat-ThinItalic.ttf
+        - asset: assets/fonts/Montserrat/Montserrat-Thin.ttf
