@@ -86,7 +86,7 @@ class HomeScreen extends StatelessWidget {
                     ),
                   ),
                   SizedBox(
-                    height: LayoutConstant.spaceBetweenGroups,
+                    height: LayoutConstant.kSpaceBetweenGroups,
                   ),
                   Padding(
                     padding: EdgeInsets.symmetric(
@@ -98,7 +98,7 @@ class HomeScreen extends StatelessWidget {
                       onTap: () {},
                     ),
                   ),
-                  SizedBox(height: LayoutConstant.spaceBetweenTitleAndCards),
+                  SizedBox(height: LayoutConstant.kSpaceBetweenTitleAndCards),
                   SizedBox(
                     height: LayoutConstant.kExerciseCardSize,
                     child: ListView.separated(
@@ -124,11 +124,11 @@ class HomeScreen extends StatelessWidget {
                               exercise: HomeController.exercises[index],
                             ),
                       separatorBuilder: (_, index) =>
-                          SizedBox(width: LayoutConstant.spaceBetweenCards),
+                          SizedBox(width: LayoutConstant.kSpaceBetweenCards),
                       itemCount: HomeController.exercises.length,
                     ),
                   ),
-                  SizedBox(height: LayoutConstant.spaceBetweenGroups),
+                  SizedBox(height: LayoutConstant.kSpaceBetweenGroups),
                   Padding(
                     padding: EdgeInsets.symmetric(
                       horizontal: LayoutConstant.kHorizontalScreenPadding,
@@ -140,7 +140,7 @@ class HomeScreen extends StatelessWidget {
                     ),
                   ),
                   SizedBox(
-                    height: LayoutConstant.spaceBetweenTitleAndCards,
+                    height: LayoutConstant.kSpaceBetweenTitleAndCards,
                   ),
                   ...HomeController.levelOnePrograms.mapIndexed(
                     (index, program) => Padding(
@@ -150,7 +150,7 @@ class HomeScreen extends StatelessWidget {
                         bottom:
                             index == HomeController.levelOnePrograms.length - 1
                                 ? 0
-                                : LayoutConstant.spaceBetweenCards,
+                                : LayoutConstant.kSpaceBetweenCards,
                       ),
                       child: ProgramCardComponent(program: program),
                     ),
@@ -168,7 +168,7 @@ class HomeScreen extends StatelessWidget {
                       onTap: () {},
                     ),
                   ),
-                  SizedBox(height: LayoutConstant.spaceBetweenTitleAndCards),
+                  SizedBox(height: LayoutConstant.kSpaceBetweenTitleAndCards),
                   ...HomeController.levelTwoPrograms.mapIndexed(
                     (index, program) => Padding(
                       padding: EdgeInsets.only(
@@ -177,12 +177,12 @@ class HomeScreen extends StatelessWidget {
                         bottom:
                             index == HomeController.levelTwoPrograms.length - 1
                                 ? 0
-                                : LayoutConstant.spaceBetweenCards,
+                                : LayoutConstant.kSpaceBetweenCards,
                       ),
                       child: ProgramCardComponent(program: program),
                     ),
                   ),
-                  SizedBox(height: LayoutConstant.spaceBetweenGroups),
+                  SizedBox(height: LayoutConstant.kSpaceBetweenGroups),
                   Padding(
                     padding: EdgeInsets.symmetric(
                       horizontal: LayoutConstant.kHorizontalScreenPadding,
@@ -193,7 +193,7 @@ class HomeScreen extends StatelessWidget {
                       onTap: () {},
                     ),
                   ),
-                  SizedBox(height: LayoutConstant.spaceBetweenTitleAndCards),
+                  SizedBox(height: LayoutConstant.kSpaceBetweenTitleAndCards),
                   ...HomeController.levelThreePrograms.mapIndexed(
                     (index, program) => Padding(
                       padding: EdgeInsets.only(
@@ -202,12 +202,12 @@ class HomeScreen extends StatelessWidget {
                         bottom: index ==
                                 HomeController.levelThreePrograms.length - 1
                             ? 0
-                            : LayoutConstant.spaceBetweenCards,
+                            : LayoutConstant.kSpaceBetweenCards,
                       ),
                       child: ProgramCardComponent(program: program),
                     ),
                   ),
-                  SizedBox(height: LayoutConstant.spaceBetweenGroups),
+                  SizedBox(height: LayoutConstant.kSpaceBetweenGroups),
                   Padding(
                     padding: EdgeInsets.symmetric(
                       horizontal: LayoutConstant.kHorizontalScreenPadding,
@@ -218,7 +218,7 @@ class HomeScreen extends StatelessWidget {
                       onTap: () {},
                     ),
                   ),
-                  SizedBox(height: LayoutConstant.spaceBetweenTitleAndCards),
+                  SizedBox(height: LayoutConstant.kSpaceBetweenTitleAndCards),
                   ...HomeController.masterLevelPrograms.mapIndexed(
                     (index, program) => Padding(
                       padding: EdgeInsets.only(
@@ -227,7 +227,7 @@ class HomeScreen extends StatelessWidget {
                         bottom:
                             index == HomeController.masterLevelPrograms.length
                                 ? 0
-                                : LayoutConstant.spaceBetweenCards,
+                                : LayoutConstant.kSpaceBetweenCards,
                       ),
                       child: ProgramCardComponent(program: program),
                     ),

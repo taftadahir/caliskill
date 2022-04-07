@@ -1,7 +1,9 @@
 import 'package:caliskill/configs/palette.dart';
 import 'package:caliskill/constants/global_constant.dart';
 import 'package:caliskill/constants/layout_constant.dart';
+import 'package:caliskill/controllers/program_controller.dart';
 import 'package:caliskill/models/program.dart';
+import 'package:caliskill/views/screens/program_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
@@ -16,17 +18,21 @@ class ProgramCardComponent extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final _roundSize = 8 * LayoutConstant.kScaleFactor;
     final _height = 80 * LayoutConstant.kScaleFactor;
     return Card(
       color: palette.primary.shade50,
       elevation: LayoutConstant.kCardElevation,
       shadowColor: palette.primary.shade50,
       shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(_roundSize),
+        borderRadius: BorderRadius.circular(LayoutConstant.kCardRadius),
       ),
       child: InkWell(
-        onTap: () {},
+        borderRadius: BorderRadius.circular(LayoutConstant.kCardRadius),
+        onTap: () {
+          ProgramController _controller = Get.find();
+          _controller.program = program;
+          Get.to(() => const ProgramScreen());
+        },
         child: Ink(
           height: _height,
           padding: EdgeInsets.symmetric(

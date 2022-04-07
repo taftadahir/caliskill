@@ -10,5 +10,6 @@ class Mode {
     textTheme: StyleConfig.textTheme,
     textButtonTheme: StyleConfig.textButtonStyle,
     iconTheme: ThemeConfig.iconTheme,
+    splashColor: palette.primary.shade200,
   );
 }

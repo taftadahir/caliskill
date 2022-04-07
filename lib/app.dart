@@ -22,7 +22,8 @@ class App extends StatelessWidget {
       themeMode: ThemeMode.light,
       getPages: RouteConfig.pages,
       initialBinding: AppBinding(),
-      initialRoute: RouteConstant.kHome,
+      initialRoute : RouteConfig.initial,
+      // initialRoute: RouteConstant.kProgram,
     );
   }
 }

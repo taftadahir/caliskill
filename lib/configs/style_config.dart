@@ -8,7 +8,7 @@ class StyleConfig {
     displayMedium: TextStyle(
       fontFamily: 'Montserrat',
       fontWeight: FontWeight.w600,
-      fontSize: 20 * LayoutConstant.kScaleFactor,
+      fontSize: 18 * LayoutConstant.kScaleFactor,
       color: palette.primary.shade900,
     ),
     displayLarge: TextStyle(
@@ -21,12 +21,24 @@ class StyleConfig {
       fontFamily: 'Montserrat',
       fontWeight: FontWeight.w500,
       fontSize: 12 * LayoutConstant.kScaleFactor,
-      color: palette.neutral.shade500,
+      color: palette.neutral.shade400,
+    ),
+    headlineMedium: TextStyle(
+      fontFamily: 'Montserrat',
+      fontWeight: FontWeight.w600,
+      fontSize: 20 * LayoutConstant.kScaleFactor,
+      color: palette.primary.shade900,
     ),
     labelMedium: TextStyle(
       fontFamily: 'Montserrat',
       fontWeight: FontWeight.w600,
       fontSize: 16 * LayoutConstant.kScaleFactor,
+      color: palette.primary.shade900,
+    ),
+    labelSmall: TextStyle(
+      fontFamily: 'Montserrat',
+      fontWeight: FontWeight.w500,
+      fontSize: 12 * LayoutConstant.kScaleFactor,
       color: palette.primary.shade900,
     ),
     bodyMedium: TextStyle(
@@ -41,9 +53,15 @@ class StyleConfig {
       fontSize: 12 * LayoutConstant.kScaleFactor,
       color: palette.primary.shade900,
     ),
+    titleSmall: TextStyle(
+      fontFamily: 'Montserrat',
+      fontWeight: FontWeight.w600,
+      fontSize: 16 * LayoutConstant.kScaleFactor,
+      color: palette.primary.shade900,
+    ),
   );
 
-  static final textButtonStyle = TextButtonThemeData(
+  static final TextButtonThemeData textButtonStyle = TextButtonThemeData(
     style: ButtonStyle(
       backgroundColor: MaterialStateProperty.all(
         palette.primary.shade500,

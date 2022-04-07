@@ -15,15 +15,15 @@ class ExerciseCardComponent extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final double _roundSize = 8 * LayoutConstant.kScaleFactor;
     return Card(
       color: palette.primary.shade50,
       elevation: LayoutConstant.kCardElevation,
       shadowColor: palette.primary.shade50,
       shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(_roundSize),
+        borderRadius: BorderRadius.circular(LayoutConstant.kCardRadius),
       ),
       child: InkWell(
+        borderRadius: BorderRadius.circular(LayoutConstant.kCardRadius),
         onTap: () {},
         child: Ink(
           width: LayoutConstant.kExerciseCardSize,
@@ -32,7 +32,7 @@ class ExerciseCardComponent extends StatelessWidget {
             alignment: exercise.image == null
                 ? Alignment.center
                 : Alignment.bottomCenter,
-            children: _buildWidget(_roundSize, context),
+            children: _buildWidget(LayoutConstant.kCardRadius, context),
           ),
         ),
       ),
