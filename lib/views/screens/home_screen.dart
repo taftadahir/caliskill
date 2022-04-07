@@ -2,10 +2,12 @@ import 'package:caliskill/configs/palette.dart';
 import 'package:caliskill/configs/theme_config.dart';
 import 'package:caliskill/constants/layout_constant.dart';
 import 'package:caliskill/controllers/home_controller.dart';
+import 'package:caliskill/controllers/program_controller.dart';
 import 'package:caliskill/views/components/button_component.dart';
 import 'package:caliskill/views/components/exercise_card_component.dart';
 import 'package:caliskill/views/components/list_head_component.dart';
 import 'package:caliskill/views/components/program_card_component.dart';
+import 'package:caliskill/views/screens/program_screen.dart';
 import 'package:eva_icons_flutter/eva_icons_flutter.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -80,7 +82,11 @@ class HomeScreen extends StatelessWidget {
                         ),
                         ButtonComponent(
                           text: 'Custom program',
-                          onPressed: () {},
+                          onPressed: () {
+                            ProgramController _controller = Get.find();
+                            _controller.program = ProgramController.customProgram;
+                            Get.to(() => const ProgramScreen());
+                          },
                         ),
                       ],
                     ),

@@ -1,3 +1,4 @@
+import 'package:caliskill/constants/layout_constant.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -30,16 +31,23 @@ class WorkoutListHeadComponent extends StatelessWidget {
         style: context.theme.textTheme.labelSmall,
       ));
     } else if (iconData != null) {
-      _widgets.add(IconButton(
-        onPressed: onTap,
-        icon: Icon(iconData),
-      ));
+      _widgets.add(
+        IconButton(
+          onPressed: onTap,
+          icon: Icon(iconData),
+        ),
+      );
     }
 
     return Padding(
-      padding: const EdgeInsets.only(bottom: 16),
+      padding: EdgeInsets.only(
+        bottom: 16,
+        right: 8 * LayoutConstant.kScaleFactor,
+        left: LayoutConstant.kScaleFactor,
+      ),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        crossAxisAlignment: CrossAxisAlignment.center,
         children: _widgets,
       ),
     );

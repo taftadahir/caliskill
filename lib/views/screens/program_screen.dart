@@ -5,6 +5,7 @@ import 'package:caliskill/constants/layout_constant.dart';
 import 'package:caliskill/constants/route_constant.dart';
 import 'package:caliskill/controllers/program_controller.dart';
 import 'package:caliskill/models/workout_type.dart';
+import 'package:caliskill/views/components/button_component.dart';
 import 'package:caliskill/views/components/workout_card_component.dart';
 import 'package:caliskill/views/components/workout_list_head_component.dart';
 import 'package:eva_icons_flutter/eva_icons_flutter.dart';
@@ -18,6 +19,7 @@ class ProgramScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     double _roundSize = 24 * LayoutConstant.kScaleFactor;
     Color _backgroundColor = palette.primary.shade200;
+    double _roundPadding = 32;
     return Scaffold(
       backgroundColor: _backgroundColor,
       body: GetBuilder(builder: (ProgramController controller) {
@@ -97,6 +99,7 @@ class ProgramScreen extends StatelessWidget {
               fillOverscroll: true,
               child: Container(
                 decoration: BoxDecoration(
+                  // color: palette.secondary.shade50,
                   color: palette.primary.shade50,
                   borderRadius: BorderRadius.vertical(
                     top: Radius.circular(_roundSize),
@@ -105,90 +108,131 @@ class ProgramScreen extends StatelessWidget {
                 padding: EdgeInsets.only(
                   left: LayoutConstant.kHorizontalScreenPadding,
                   right: LayoutConstant.kHorizontalScreenPadding,
-                  top: LayoutConstant.kAppBarCollapsedHeight,
+                  top: _roundPadding,
                 ),
-                child: ListView.separated(
-                  physics: ThemeConfig.kPhysics,
-                  itemCount: controller.workoutLength,
-                  itemBuilder: (_, index) {
-                    if (index == 0) {
-                      return Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          WorkoutListHeadComponent(
-                            title: 'Warm Up',
-                            subTitle: controller
-                                .workouts(type: WorkoutType.warmUp)
-                                .length
-                                .toString(),
+                child: Material(
+                  color: palette.primary.shade50,
+                  child: ListView.separated(
+                    physics: ThemeConfig.kPhysics,
+                    itemCount: controller.workoutLength,
+                    itemBuilder: (_, index) {
+                      if (index == 0) {
+                        return Padding(
+                          padding: EdgeInsets.only(
+                            top: LayoutConstant.kAppBarCollapsedHeight -
+                                _roundPadding,
                           ),
-                          WorkoutCardComponent(
-                            workout: controller.workouts()[index],
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              controller.program.id ==
+                                      ProgramController.customProgram.id
+                                  ? WorkoutListHeadComponent(
+                                      title: 'Warm Up',
+                                      iconData: EvaIcons.plusCircleOutline,
+                                      onTap: () {},
+                                    )
+                                  : WorkoutListHeadComponent(
+                                      title: 'Warm Up',
+                                      subTitle: controller
+                                          .workouts(type: WorkoutType.warmUp)
+                                          .length
+                                          .toString(),
+                                    ),
+                              WorkoutCardComponent(
+                                workout: controller.workouts()[index],
+                              ),
+                            ],
                           ),
-                        ],
+                        );
+                      } else if (index ==
+                          controller
+                              .workouts(type: WorkoutType.warmUp)
+                              .length) {
+                        return Column(
+                          children: [
+                            SizedBox(
+                              height: LayoutConstant.kSpaceBetweenGroups,
+                            ),
+                            controller.program.id ==
+                                    ProgramController.customProgram.id
+                                ? WorkoutListHeadComponent(
+                                    title: 'Workouts',
+                                    iconData: EvaIcons.plusCircleOutline,
+                                    onTap: () {},
+                                  )
+                                : WorkoutListHeadComponent(
+                                    title: 'Workouts',
+                                    subTitle: controller
+                                        .workouts(
+                                          type: WorkoutType.workout,
+                                        )
+                                        .length
+                                        .toString(),
+                                  ),
+                            WorkoutCardComponent(
+                              workout: controller.workouts()[index],
+                            )
+                          ],
+                        );
+                      } else if (index ==
+                          controller
+                                  .workouts(type: WorkoutType.workout)
+                                  .length +
+                              controller
+                                  .workouts(type: WorkoutType.warmUp)
+                                  .length) {
+                        return Column(
+                          children: [
+                            SizedBox(
+                              height: LayoutConstant.kSpaceBetweenGroups,
+                            ),
+                            controller.program.id ==
+                                    ProgramController.customProgram.id
+                                ? WorkoutListHeadComponent(
+                                    title: 'Stretch',
+                                    iconData: EvaIcons.plusCircleOutline,
+                                    onTap: () {},
+                                  )
+                                : WorkoutListHeadComponent(
+                                    title: 'Stretch',
+                                    subTitle: controller
+                                        .workouts(
+                                          type: WorkoutType.stretch,
+                                        )
+                                        .length
+                                        .toString(),
+                                  ),
+                            WorkoutCardComponent(
+                              workout: controller.workouts()[index],
+                            )
+                          ],
+                        );
+                      } else if (controller.workoutLength - 1 == index) {
+                        return Column(
+                          children: [
+                            WorkoutCardComponent(
+                              workout: controller.workouts()[index],
+                            ),
+                            SizedBox(
+                              height: LayoutConstant.kSpaceBetweenGroups,
+                            ),
+                            ButtonComponent(
+                              text: 'Start',
+                              onPressed: () {},
+                            ),
+                            const SizedBox(height: 24),
+                          ],
+                        );
+                      }
+                      return WorkoutCardComponent(
+                        workout: controller.workouts()[index],
                       );
-                    } else if (index ==
-                        controller.workouts(type: WorkoutType.warmUp).length) {
-                      return Column(
-                        children: [
-                          SizedBox(
-                            height: LayoutConstant.kSpaceBetweenGroups,
-                          ),
-                          WorkoutListHeadComponent(
-                            title: 'Workouts',
-                            subTitle: controller
-                                .workouts(
-                                  type: WorkoutType.workout,
-                                )
-                                .length
-                                .toString(),
-                          ),
-                          WorkoutCardComponent(
-                            workout: controller.workouts()[index],
-                          )
-                        ],
-                      );
-                    } else if (index ==
-                        controller.workouts(type: WorkoutType.workout).length +
-                            controller
-                                .workouts(type: WorkoutType.warmUp)
-                                .length) {
-                      return Column(
-                        children: [
-                          SizedBox(
-                            height: LayoutConstant.kSpaceBetweenGroups,
-                          ),
-                          WorkoutListHeadComponent(
-                            title: 'Stretch',
-                            subTitle: controller
-                                .workouts(
-                                  type: WorkoutType.stretch,
-                                )
-                                .length
-                                .toString(),
-                          ),
-                          WorkoutCardComponent(
-                            workout: controller.workouts()[index],
-                          )
-                        ],
-                      );
-                    } else if (controller.workoutLength - 1 == index) {
-                      return Column(
-                        children: [
-                          WorkoutCardComponent(
-                            workout: controller.workouts()[index],
-                          ),
-                          const SizedBox(height: 24),
-                        ],
-                      );
-                    }
-                    return WorkoutCardComponent(
-                      workout: controller.workouts()[index],
-                    );
-                  },
-                  separatorBuilder: (BuildContext context, int index) =>
-                      Divider(
-                    color: palette.primary.shade200,
+                    },
+                    separatorBuilder: (BuildContext context, int index) =>
+                        Divider(
+                      color: palette.primary.shade200,
+                    ),
                   ),
                 ),
               ),
