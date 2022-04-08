@@ -12,4 +12,7 @@ class ThemeConfig {
     opacity: 1.0,
     size: 24 * LayoutConstant.kScaleFactor,
   );
+
+  // Animation duration
+  static Duration animationDuration = const Duration(milliseconds: 300);
 }

@@ -7,15 +7,18 @@ import 'package:get/get.dart';
 class ProgramController extends GetxController {
   late Program _program;
   late int _selectedDay;
+  late int _lastCompletedDay;
 
   @override
   void onInit() {
     super.onInit();
-    _selectedDay = 0;
+    _lastCompletedDay = 10;
+    _selectedDay = _lastCompletedDay + 1;
   }
 
   static Program get customProgram => Program(
         id: -1,
+        days: 30,
         name: 'Custom Program',
         image: 'front_lever.png',
       );
@@ -26,55 +29,62 @@ class ProgramController extends GetxController {
     if (type == WorkoutType.warmUp) {
       //  Return Warm Up workouts
       _workouts = List.generate(
-        4,
+        3,
         (index) => Workout(
+          id: index,
+          reps: 23,
+          day: selectedDay,
+          type: WorkoutType.warmUp,
+          exercise: Exercise(
             id: index,
-            reps: 23,
-            type: WorkoutType.warmUp,
-            exercise: Exercise(
-              id: index,
-              name: 'Front lever',
-              image: 'front_lever.png',
-            ),
-            program: program),
+            name: 'Front lever',
+            image: 'front_lever.png',
+          ),
+          program: program,
+        ),
       );
     } else if (type == WorkoutType.workout) {
       // Return workouts
       _workouts = List.generate(
-        20,
+        17,
         (index) => Workout(
+          id: index,
+          day: selectedDay,
+          reps: 4 * index,
+          type: WorkoutType.workout,
+          exercise: Exercise(
             id: index,
-            reps: 4 * index,
-            type: WorkoutType.workout,
-            exercise: Exercise(
-              id: index,
-              name: 'Front lever',
-              image: 'front_lever.png',
-            ),
-            program: program),
+            name: 'Front lever',
+            image: 'front_lever.png',
+          ),
+          program: program,
+        ),
       );
     } else if (type == WorkoutType.stretch) {
       //  Return Stretch workouts
       _workouts = List.generate(
-        4,
+        3,
         (index) => Workout(
+          id: index,
+          day: selectedDay,
+          reps: 2 * index,
+          time: 180,
+          type: WorkoutType.stretch,
+          exercise: Exercise(
             id: index,
-            reps: 2 * index,
-            time: 180,
-            type: WorkoutType.stretch,
-            exercise: Exercise(
-              id: index,
-              name: 'Front lever',
-              image: 'front_lever.png',
-            ),
-            program: program),
+            name: 'Front lever',
+            image: 'front_lever.png',
+          ),
+          program: program,
+        ),
       );
     } else {
       // Return all workouts without filter
       _workouts = List.generate(
-        28,
+        _program.days ?? 0,
         (index) => Workout(
           id: index,
+          day: index,
           reps: 4 * index,
           type: index % 3 == 0
               ? WorkoutType.workout
@@ -89,13 +99,17 @@ class ProgramController extends GetxController {
       );
     }
 
-    return _workouts;
+    return _workouts.where((workout) => workout.day == selectedDay).toList();
   }
 
   int get workoutLength => workouts().length;
 
   set program(Program program) {
     _program = program;
+    _lastCompletedDay = 10;
+    _selectedDay = _lastCompletedDay + 1 < (_program.days ?? 0)
+        ? _lastCompletedDay + 1
+        : (_program.days != null ? _program.days! - 1 : 0);
     update();
   }
 
@@ -105,6 +119,13 @@ class ProgramController extends GetxController {
 
   set selectedDay(int day) {
     _selectedDay = day;
+    update();
+  }
+
+  int get lastCompletedDay => _lastCompletedDay;
+
+  set lastCompletedDay(int day) {
+    _lastCompletedDay = day;
     update();
   }
 }

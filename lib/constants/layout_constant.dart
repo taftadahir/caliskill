@@ -15,4 +15,5 @@ class LayoutConstant {
   static double kAppBarExpandedHeight = 280 * kScaleFactor;
   static const double kAppBarElevation = 0;
   static double kCardRadius = 8 * kScaleFactor;
+  static int kGridColumn = 7;
 }

@@ -9,6 +9,7 @@ class Workout {
   final int? reps;
   final int? time;
   final int? restTime;
+  final int? day;
   final WorkoutType type;
   final Workout? prev;
 
@@ -21,5 +22,6 @@ class Workout {
     this.restTime,
     this.type = WorkoutType.workout,
     this.prev,
+    this.day,
   });
 }

@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 
 class Mode {
   static final ThemeData light = ThemeData(
+    primarySwatch: palette.primary,
     scaffoldBackgroundColor: palette.primary.shade50,
     fontFamily: 'Montserrat',
     textTheme: StyleConfig.textTheme,
